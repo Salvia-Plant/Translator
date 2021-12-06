@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -20,8 +20,8 @@ def index():
 @app.route('/', methods=['POST'])
 def index_post():
 	# Read the values from the form
-	original_text = requests.form.get['text']
-	target_language = requests.form.get['language']
+	original_text = requests.form['text']
+	target_language = requests.form['language']
 
 	# Load the values from .env
 	key = os.environ['KEY']
